@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { useDispatch } from "react-redux";
+
 import {
   updateUserStart,
   updateUserFailure,
@@ -49,6 +49,8 @@ export default function Profile() {
     formdata.append("email", formData.email);
     formdata.append("password", formData.password);
     const token = localStorage.getItem("token");
+    const userId = localStorage.getItem("userId");
+    
 
     dispatch(updateUserStart());
     axios
@@ -56,10 +58,12 @@ export default function Profile() {
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization: token,
+          "User-Id": userId
+
+
         },
       })
       .then((res) => {
-        console.log(res.data);
         dispatch(updateUserSuccess(res.data.user));
         navigate("/");
       })
@@ -89,10 +93,10 @@ export default function Profile() {
       dispatch(deleteUserFailure(err));
     }
   };
-  const handleSignout = async() => {
+  const handleSignout = async () => {
     try {
-      await fetch('/api/auth/signout');
-      dispatch(signOut())
+      await fetch("/api/auth/signout");
+      dispatch(signOut());
     } catch (error) {
       console.log(error);
     }

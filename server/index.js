@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import userRoute from "./Routes/userRoute.js";
 import authRoute from "./Routes/authRoute.js";
+import adminRoute from "./Routes/adminRoute.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import path from "path";
@@ -25,6 +26,7 @@ app.use(express.static(path.join(__dirname, 'uploads')));
 
 app.use("/api/auth", authRoute);
 app.use("/api/user", userRoute);
+app.use('/api/admin',adminRoute)
 
 app.use((err, req, res, next) => {
   const statusCode = err.statusCode || 500;
