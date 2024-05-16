@@ -15,10 +15,9 @@ export default function AdminHeader() {
   return (
     <div className="bg-slate-200">
       <div className="flex justify-between items-center max-w-6xl mx-auto p-3">
-        <Link to="/">
-          {" "}
+       
           <h1 className="font-bold">Beauty app</h1>
-        </Link>
+  
 
         <ul className="flex gap-4">
           {admin ? <li>{admin.name}</li> : "Welcome to Admin"}

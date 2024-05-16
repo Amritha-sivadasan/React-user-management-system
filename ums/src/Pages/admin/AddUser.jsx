@@ -3,7 +3,12 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 export default function AddUser() {
-  const [formData, setFormData] = useState({});
+  const [formData, setFormData] = useState({
+    userName: "",
+    email: "",
+    password: "",
+  });
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const handleClick = () => {
@@ -14,6 +19,20 @@ export default function AddUser() {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (formData.userName.trim() == "") {
+      setError("Please Enter valid name");
+      return;
+    }
+    if (formData.email.trim() == "") {
+      setError("Please Enter valid Email");
+      return;
+    }
+    if (formData.password.trim() == "" || formData.password.length < 8) {
+      setError("Please Enter valid Password");
+      return;
+    }
+    setError("");
     const token = localStorage.getItem("adminToken");
     axios
       .post("/api/admin/addUser", formData, {
@@ -22,6 +41,11 @@ export default function AddUser() {
         },
       })
       .then((res) => {
+        if(res.data.success==false){
+          setError(res.data.message)
+          return
+        } 
+
         navigate("/admin/home");
       })
       .catch((err) => console.log(err));
@@ -29,6 +53,7 @@ export default function AddUser() {
   return (
     <div className="p-3 max-w-lg mx-auto">
       <h1 className=" text-3xl font-semibold text-center my-7">Add User</h1>
+      <p className="text-red-700 mt-5 mb-7 text-center">{error}</p>
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <input
           //   defaultValue={currentUser.userName}

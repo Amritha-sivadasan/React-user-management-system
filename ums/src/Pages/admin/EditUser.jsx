@@ -5,6 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 export default function EditUser() {
   const [userName, setUserName] = useState("");
   const [email, setemail] = useState("");
+  const [err, setErr] = useState("");
 
   const { id } = useParams();
 
@@ -23,7 +24,7 @@ export default function EditUser() {
     e.preventDefault();
 
     axios
-      .post(`/api/admin/editUser/${id}`, {userName,email})
+      .post(`/api/admin/editUser/${id}`, { userName, email })
       .then((res) => {
         if (res.data.success) {
           naviagte("/admin/home");

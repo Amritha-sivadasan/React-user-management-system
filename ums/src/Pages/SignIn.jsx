@@ -27,20 +27,21 @@ export default function SignIn() {
       });
 
       const data = await res.json();
-      console.log("data",data);
+      console.log("data", data);
+      if (data.success === false) {
+        dispatch(signInFailure(data));
+        return;
+      }
       const token = data.token;
       const userId = data.user._id;
       localStorage.setItem("token", token);
       localStorage.setItem("userId", userId);
 
       dispatch(signInSuccess(data.user));
-      if (data.success == false) {
-        dispatch(signInFailure(data.user));
-        return;
-      }
       Navigate("/");
     } catch (error) {
       dispatch(signInFailure(error));
+      console.log(error);
     }
   };
 

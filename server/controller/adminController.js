@@ -3,7 +3,7 @@ import User from "../models/userModel.js";
 import bcryptjs from "bcryptjs";
 import jwt from "jsonwebtoken";
 
-export const adminLogin = async (req, res) => {
+export const adminLogin = async (req, res, next) => {
   console.log(req.body);
   const { name, password } = req.body;
   try {
@@ -31,14 +31,29 @@ export const adminLogin = async (req, res) => {
 
 export const dashboard = async (req, res) => {
   try {
-    const users = await User.find();
+    const users = await User.find().sort({_id:-1})
     res.status(200).json(users);
-  } catch (error) {}
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 export const addUser = async (req, res, next) => {
   try {
     const { userName, email, password } = req.body;
+    const user = await User.findOne({ userName });
+    const existEmail = await User.findOne({ email });
+    console.log(req.body);
+    if (user) {
+      return res.json({ success: false, message: "UserName Already exist" });
+    }
+    if (existEmail) {
+      return res.json({ success: false, message: "Email Already exist" });
+    }
+    if (password.length < 8) {
+      return res.json({ success: false, message: "Enter valid password" });
+    }
+
     const hashedPassword = bcryptjs.hashSync(password, 10);
     const newUser = new User({ userName, email, password: hashedPassword });
 
