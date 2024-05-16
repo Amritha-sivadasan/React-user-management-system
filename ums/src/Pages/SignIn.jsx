@@ -46,40 +46,50 @@ export default function SignIn() {
   };
 
   return (
-    <div className="p-3 max-w-lg mx-auto">
-      <h1 className="text-3xl text-center font-semibold my-7">sign In</h1>
-      <p className="text-red-700 mt-5 mb-7 text-center">
-        {error ? error.message || "Something went wrong!" : ""}
-      </p>
+    <div
+      className=" min-h-screen overflow-hidden bg-cover bg-no-repeat"
+      style={{
+        backgroundImage:
+          "url('https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTA5L3Jhd3BpeGVsX29mZmljZV8zMV9mbGF0X2xheV9zcHJlYWRfdG9wX3ZpZXdfb2ZfY29zbWV0aWNfcHJvZHVjdF82NjI4OWQ2NS00ZjU3LTQ0MTQtOGU2My05MjYwNzlmN2MxYTRfMS5qcGc.jpg')",
+      }}
+    >
+      <div className="p-3 max-w-lg mx-auto ">
+        <h1 className="text-3xl text-center font-semibold my-7">sign In</h1>
+        <p className="text-red-700 mt-5 mb-7 text-center">
+          {error ? error.message || "Something went wrong!" : ""}
+        </p>
 
-      <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-        <input
-          type="email"
-          placeholder="Email"
-          id="email"
-          className="bg-slate-100 p-3 rounded-lg"
-          onChange={handleChange}
-        />
-        <input
-          type="password"
-          placeholder="password"
-          id="password"
-          className="bg-slate-100 p-3 rounded-lg"
-          onChange={handleChange}
-        />
-        <button
-          disabled={loading}
-          className="bg-slate-700 text-white p-3 rounded-lg uppercase hover:opacity-95 disabled:opacity-80"
-        >
-          {loading ? "Loading..." : "Sign In"}
-        </button>
-      </form>
-      <div className="flex  gap-3 mt-5">
-        <p>Don't Have an Account?</p>
-        <Link to="/sign-up">
-          {" "}
-          <span className="text-blue-500">Create an Account</span>
-        </Link>
+        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+          <input
+            type="email"
+            placeholder="Email"
+            id="email"
+            className=" p-3 rounded-lg"
+            onChange={handleChange}
+          />
+          <input
+            type="password"
+            placeholder="password"
+            id="password"
+            className=" p-3 rounded-lg border-red-700"
+            onChange={handleChange}
+          />
+          <button
+            disabled={loading}
+            className="bg-slate-700 text-white p-3 rounded-lg uppercase hover:opacity-95 disabled:opacity-80 "
+          >
+            {loading ? "Loading..." : "Sign In"}
+          </button>
+        </form>
+        <div className="flex  gap-3 mt-5">
+          <p>Don't Have an Account?</p>
+          <Link to="/sign-up">
+            {" "}
+            <span className="text-green-500 font-semibold hover:text-green-700 transition-colors">
+              Create an Account
+            </span>
+          </Link>
+        </div>
       </div>
     </div>
   );

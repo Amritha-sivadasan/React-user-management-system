@@ -13,11 +13,9 @@ export default function AdminHeader() {
     navigate("/admin");
   };
   return (
-    <div className="bg-slate-200">
+    <div className="bg-gradient-to-r from-blue-200 to-purple-200 shadow-lg">
       <div className="flex justify-between items-center max-w-6xl mx-auto p-3">
-       
-          <h1 className="font-bold">Beauty app</h1>
-  
+        <h1 className="font-bold">Beauty app</h1>
 
         <ul className="flex gap-4">
           {admin ? <li>{admin.name}</li> : "Welcome to Admin"}

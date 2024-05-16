@@ -36,30 +36,40 @@ export default function Login() {
       });
   };
   return (
-    <div className="p-3 max-w-lg mx-auto">
-      <h1 className="text-3xl text-center font-semibold my-7">sign In</h1>
-      <p className="text-red-700 mt-5 mb-7 text-center"></p>
+    <div
+      className="h-screen overflow-hidden   bg-cover bg-no-repeat"
+      style={{
+        backgroundImage:
+          "url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS288wlPqMYcxCyISPn6rvlViTq9MNN_qo8Iw&s')",
+      }}
+    >
+      <div className="p-3 max-w-lg mx-auto">
+        <h1 className="text-3xl text-center font-semibold my-7 text-white">
+          sign In
+        </h1>
+        <p className="text-red-700 mt-5 mb-7 text-center"></p>
 
-      <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-        <input
-          type="text"
-          placeholder="name"
-          id="name"
-          className="bg-slate-100 p-3 rounded-lg"
-          onChange={handleChange}
-        />
-        <input
-          type="password"
-          placeholder="password"
-          id="password"
-          className="bg-slate-100 p-3 rounded-lg"
-          onChange={handleChange}
-        />
-        <button className="bg-slate-700 text-white p-3 rounded-lg uppercase hover:opacity-95 disabled:opacity-80">
-          Login
-        </button>
-      </form>
-      <div className="flex  gap-3 mt-5"></div>
+        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+          <input
+            type="text"
+            placeholder="name"
+            id="name"
+            className="bg-slate-100 p-3 rounded-lg"
+            onChange={handleChange}
+          />
+          <input
+            type="password"
+            placeholder="password"
+            id="password"
+            className="bg-slate-100 p-3 rounded-lg"
+            onChange={handleChange}
+          />
+          <button className="bg-slate-700 text-white p-3 rounded-lg uppercase hover:opacity-95 disabled:opacity-80">
+            Login
+          </button>
+        </form>
+        <div className="flex  gap-3 mt-5"></div>
+      </div>
     </div>
   );
 }

@@ -50,7 +50,6 @@ export default function Profile() {
     formdata.append("password", formData.password);
     const token = localStorage.getItem("token");
     const userId = localStorage.getItem("userId");
-    
 
     dispatch(updateUserStart());
     axios
@@ -58,9 +57,7 @@ export default function Profile() {
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization: token,
-          "User-Id": userId
-
-
+          "User-Id": userId,
         },
       })
       .then((res) => {
@@ -103,65 +100,76 @@ export default function Profile() {
   };
 
   return (
-    <div className="p-3 max-w-lg mx-auto">
-      <h1 className=" text-3xl font-semibold text-center my-7">Profile</h1>
-      <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-        <input
-          type="file"
-          ref={fileRef}
-          id="profilepicture"
-          hidden
-          accept="image/*"
-          onChange={handleImageChange}
-        />
-        <img
-          src={
-            image
-              ? image
-              : `http://localhost:3000/${currentUser.profilepicture}`
-          }
-          alt="profile"
-          className="h-24 w-24 self-center rounded-full object-cover cursor-pointer"
-          onClick={() => fileRef.current.click()}
-        />
-        <input
-          defaultValue={currentUser.userName}
-          type="text"
-          id="userName"
-          placeholder="UserName"
-          className="bg-slate-100 rounded-lg p-3"
-          onChange={handleChange}
-        />
-        <input
-          defaultValue={currentUser.email}
-          type="email"
-          id="email"
-          placeholder="Email"
-          className="bg-slate-100 rounded-lg p-3"
-          onChange={handleChange}
-        />
-        <input
-          type="password"
-          id="password"
-          placeholder="Password"
-          className="bg-slate-100 rounded-lg p-3"
-          onChange={handleChange}
-        />
-        <button className="bg-slate-700 text-white p-3 font-bold rounded-lg uppercase hover:opacity-95 disabled:opacity-80">
-          Update
-        </button>
-      </form>
-      <div className="flex justify-between mt-5">
-        {" "}
-        <span
-          onClick={handleDeleteAccount}
-          className="text-red-700 cursor-pointer"
-        >
-          Delete Account
-        </span>{" "}
-        <span onClick={handleSignout} className="text-blue-600 cursor-pointer">
-          Signout
-        </span>{" "}
+    <div
+      className="h-screen overflow-hidden    bg-cover bg-no-repeat"
+      style={{
+        backgroundImage:
+          "url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHbwOSuxVJpOvR1bhN0OtOhlSxSwVy2cj0EQ&s')",
+      }}
+    >
+      <div className="p-3 max-w-lg mx-auto">
+        <h1 className=" text-3xl font-semibold text-center my-7">Profile</h1>
+        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+          <input
+            type="file"
+            ref={fileRef}
+            id="profilepicture"
+            hidden
+            accept="image/*"
+            onChange={handleImageChange}
+          />
+          <img
+            src={
+              image
+                ? image
+                : `http://localhost:3000/${currentUser.profilepicture}`
+            }
+            alt="profile"
+            className="h-24 w-24 self-center rounded-full object-cover cursor-pointer"
+            onClick={() => fileRef.current.click()}
+          />
+          <input
+            defaultValue={currentUser.userName}
+            type="text"
+            id="userName"
+            placeholder="UserName"
+            className="bg-slate-100 rounded-lg p-3"
+            onChange={handleChange}
+          />
+          <input
+            defaultValue={currentUser.email}
+            type="email"
+            id="email"
+            placeholder="Email"
+            className="bg-slate-100 rounded-lg p-3"
+            onChange={handleChange}
+          />
+          <input
+            type="password"
+            id="password"
+            placeholder="Password"
+            className="bg-slate-100 rounded-lg p-3"
+            onChange={handleChange}
+          />
+          <button className="bg-slate-700 text-white p-3 font-bold rounded-lg uppercase hover:opacity-95 disabled:opacity-80">
+            Update
+          </button>
+        </form>
+        <div className="flex justify-between mt-5">
+          {" "}
+          <span
+            onClick={handleDeleteAccount}
+            className="text-red-700 cursor-pointer"
+          >
+            Delete Account
+          </span>{" "}
+          <span
+            onClick={handleSignout}
+            className="text-blue-600 cursor-pointer"
+          >
+            Signout
+          </span>{" "}
+        </div>
       </div>
     </div>
   );

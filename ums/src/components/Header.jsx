@@ -5,7 +5,7 @@ export default function Header() {
   const { currentUser } = useSelector((state) => state.user);
 
   return (
-    <div className="bg-slate-200">
+    <div className="bg-gradient-to-r from-pink-200 to-purple-300">
       <div className="flex justify-between items-center max-w-6xl mx-auto p-3">
         <Link to="/">
           {" "}
@@ -31,9 +31,7 @@ export default function Header() {
               {" "}
               <li>Sign In</li>
             </Link>
-            
           )}
-          
         </ul>
       </div>
     </div>
