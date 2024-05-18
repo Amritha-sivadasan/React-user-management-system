@@ -37,31 +37,33 @@ export default function EditUser() {
     naviagte(`/admin/home`);
   };
   return (
-    <div className="p-3 max-w-lg mx-auto">
-      <h1 className=" text-3xl font-semibold text-center my-7">Edit user</h1>
-      <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-        <input
-          defaultValue={userName}
-          type="text"
-          id="userName"
-          placeholder="UserName"
-          className="bg-slate-100 rounded-lg p-3"
-          onChange={(e) => setUserName(e.target.value)}
-        />
-        <input
-          defaultValue={email}
-          type="email"
-          id="email"
-          placeholder="Email"
-          className="bg-slate-100 rounded-lg p-3"
-          onChange={(e) => setemail(e.target.value)}
-        />
+    <div className="h-screen overflow-hidden bg-gradient-to-r from-blue-100 to-pink-100 bg-cover bg-no-repeat">
+      <div className="p-3 max-w-lg mx-auto">
+        <h1 className=" text-3xl font-semibold text-center my-7">Edit user</h1>
+        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+          <input
+            defaultValue={userName}
+            type="text"
+            id="userName"
+            placeholder="UserName"
+            className="rounded-lg p-3"
+            onChange={(e) => setUserName(e.target.value)}
+          />
+          <input
+            defaultValue={email}
+            type="email"
+            id="email"
+            placeholder="Email"
+            className=" rounded-lg p-3"
+            onChange={(e) => setemail(e.target.value)}
+          />
 
-        <button className="bg-slate-700 text-white p-3 font-bold rounded-lg uppercase hover:opacity-95 disabled:opacity-80">
-          UPDATE
-        </button>
-        <button onClick={handleClick}>Back</button>
-      </form>
+          <button className="bg-slate-700 text-white p-3 font-bold rounded-lg uppercase hover:opacity-95 disabled:opacity-80">
+            UPDATE
+          </button>
+          <button onClick={handleClick}>Back</button>
+        </form>
+      </div>
     </div>
   );
 }

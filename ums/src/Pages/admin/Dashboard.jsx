@@ -62,7 +62,7 @@ export default function Dashboard() {
   );
 
   return (
-    <div className="">
+    <div className="h-screen overflow-hidden bg-gradient-to-r from-blue-100 to-pink-100 bg-cover bg-no-repeat">
       <div className="max-w-2xl mx-auto">
         <h1 className="text-2xl font-bold mb-4">Users</h1>
         <div className="flex justify-between mb-4">
@@ -80,7 +80,7 @@ export default function Dashboard() {
           />
         </div>
 
-        <table className="w-full border-collapse border border-gray-300">
+        <table className="w-full border-collapse border border-gray-300 bg-white">
           <thead className="bg-gray-200">
             <tr>
               <th className="border border-gray-300 px-4 py-2">no.</th>

@@ -41,48 +41,50 @@ export default function AddUser() {
         },
       })
       .then((res) => {
-        if(res.data.success==false){
-          setError(res.data.message)
-          return
-        } 
+        if (res.data.success == false) {
+          setError(res.data.message);
+          return;
+        }
 
         navigate("/admin/home");
       })
       .catch((err) => console.log(err));
   };
   return (
-    <div className="p-3 max-w-lg mx-auto">
-      <h1 className=" text-3xl font-semibold text-center my-7">Add User</h1>
-      <p className="text-red-700 mt-5 mb-7 text-center">{error}</p>
-      <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-        <input
-          //   defaultValue={currentUser.userName}
-          type="text"
-          id="userName"
-          placeholder="UserName"
-          className="bg-slate-100 rounded-lg p-3"
-          onChange={handleChange}
-        />
-        <input
-          //   defaultValue={currentUser.email}
-          type="email"
-          id="email"
-          placeholder="Email"
-          className="bg-slate-100 rounded-lg p-3"
-          onChange={handleChange}
-        />
-        <input
-          type="password"
-          id="password"
-          placeholder="Password"
-          className="bg-slate-100 rounded-lg p-3"
-          onChange={handleChange}
-        />
-        <button className="bg-slate-700 text-white p-3 font-bold rounded-lg uppercase hover:opacity-95 disabled:opacity-80">
-          ADD
-        </button>
-        <button onClick={handleClick}>Back</button>
-      </form>
+    <div className="h-screen overflow-hidden bg-gradient-to-r from-blue-100 to-pink-100 bg-cover bg-no-repeat">
+      <div className="p-3 max-w-lg mx-auto">
+        <h1 className=" text-3xl font-semibold text-center my-7">Add User</h1>
+        <p className="text-red-700 mt-5 mb-7 text-center">{error}</p>
+        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+          <input
+            //   defaultValue={currentUser.userName}
+            type="text"
+            id="userName"
+            placeholder="UserName"
+            className="rounded-lg p-3"
+            onChange={handleChange}
+          />
+          <input
+            //   defaultValue={currentUser.email}
+            type="email"
+            id="email"
+            placeholder="Email"
+            className=" rounded-lg p-3"
+            onChange={handleChange}
+          />
+          <input
+            type="password"
+            id="password"
+            placeholder="Password"
+            className=" rounded-lg p-3"
+            onChange={handleChange}
+          />
+          <button className="bg-slate-700 text-white p-3 font-bold rounded-lg uppercase hover:opacity-95 disabled:opacity-80">
+            ADD
+          </button>
+          <button onClick={handleClick}>Back</button>
+        </form>
+      </div>
     </div>
   );
 }
