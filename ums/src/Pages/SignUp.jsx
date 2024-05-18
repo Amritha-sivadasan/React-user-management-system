@@ -15,6 +15,10 @@ export default function SignUp() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      if (Object.keys(formData).length === 0) {
+        setErr('Please fill out the form');
+        return;
+      }
       if (formData.userName.trim() == "") {
         setErr("Please Enter valid Name");
         return;
